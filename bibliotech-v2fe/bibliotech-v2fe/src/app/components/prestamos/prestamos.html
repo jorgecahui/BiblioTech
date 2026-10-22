@@ -1,0 +1,80 @@
+<div class="contenedor">
+
+  <div class="encabezado">
+    <h1>BiblioTech</h1>
+    <p>Sistema de Gestión de Biblioteca</p>
+  </div>
+
+  <div class="tarjeta">
+
+    <h2>Gestión de Préstamos</h2>
+    <p class="subtitulo">
+      Validación y registro de préstamos de libros
+    </p>
+    <p class="regla">Cada estudiante puede tener un máximo de 3 préstamos activos.</p>
+
+    <div class="campo">
+      <label for="estudianteId">ID Estudiante</label>
+
+      <input
+        id="estudianteId"
+        type="number"
+        min="1"
+        step="1"
+        required
+        [disabled]="procesando"
+        [(ngModel)]="estudianteId">
+    </div>
+
+    <div class="campo">
+      <label for="libroId">ID Libro</label>
+
+      <input
+        id="libroId"
+        type="number"
+        min="1"
+        step="1"
+        required
+        [disabled]="procesando"
+        [(ngModel)]="libroId">
+    </div>
+
+    <div class="acciones">
+
+      <button
+        id="btnValidar"
+        class="btn-validar"
+        [disabled]="procesando"
+        (click)="validarPrestamo()">
+        Validar préstamo
+      </button>
+
+      <button
+        id="btnRegistrar"
+        class="btn-registrar"
+        [disabled]="procesando"
+        (click)="registrarPrestamo()">
+        Registrar préstamo
+      </button>
+
+    </div>
+
+    @if (mensaje) {
+
+      <div
+        id="resultado"
+        class="resultado"
+        role="status"
+        aria-live="polite"
+        [class.correcto]="disponible"
+        [class.error]="disponible === false">
+
+        {{ mensaje }}
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

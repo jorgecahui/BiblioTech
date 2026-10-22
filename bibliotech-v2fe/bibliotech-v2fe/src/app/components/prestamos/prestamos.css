@@ -1,0 +1,107 @@
+.contenedor {
+  min-height: 100vh;
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+}
+
+.encabezado {
+  background: #173b67;
+  color: white;
+  padding: 24px 40px;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.encabezado p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.tarjeta {
+  width: 520px;
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.12);
+}
+
+.tarjeta h2 {
+  margin: 0;
+  color: #173b67;
+}
+
+.subtitulo {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.regla {
+  color: #173b67;
+  margin-bottom: 25px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.campo input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-validar {
+  background: #1769aa;
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.btn-registrar {
+  background: #218838;
+}
+
+.resultado {
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.correcto {
+  background: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+}

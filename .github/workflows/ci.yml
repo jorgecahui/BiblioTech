@@ -1,0 +1,46 @@
+name: CI - BiblioTech
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'practica/**'
+  pull_request:
+    branches:
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend - Java 21 y pruebas
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+
+      - name: Preparar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: bibliotech_v2/pom.xml
+
+      - name: Compilar y ejecutar pruebas
+        run: mvn -B verify --file bibliotech_v2/pom.xml
+
+      - name: Conservar reportes de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-pruebas-backend
+          path: bibliotech_v2/target/surefire-reports/
+          if-no-files-found: warn
+          retention-days: 14
