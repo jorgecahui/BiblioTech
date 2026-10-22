@@ -16,4 +16,12 @@ Este es el primer PR de un repositorio inicialmente vacío: también incorpora l
 - Interfaz: `npm test -- --watch=false`, 24 pruebas aprobadas; `npm run build`, compilación correcta.
 - Demostración aislada: al cambiar `>=` por `>` falla una aserción con tres préstamos activos; al restaurar `>=`, las 18 pruebas unitarias vuelven a pasar.
 
-El error deliberado no forma parte de esta rama. Las ejecuciones y capturas de GitHub Actions se añadirán después de publicar.
+## GitHub Actions
+
+- [CI del PR: Success](https://github.com/jorgecahui/BiblioTech/actions/runs/39853394870), 27 pruebas aprobadas.
+- [Error controlado: Failure](https://github.com/jorgecahui/BiblioTech/actions/runs/39853501576), 27 pruebas ejecutadas, 3 fallos de aserción y 0 errores.
+- [Corrección: Success](https://github.com/jorgecahui/BiblioTech/actions/runs/39853717419), 27 pruebas aprobadas.
+
+La demostración se realizó en `practica/fallo-limite`, en los commits `34a1f9d` (error) y `ee44be3` (corrección). El error deliberado no forma parte de este PR. Se entregan capturas y reportes oficiales en `docs/evidencias/github/` y en el informe PDF. El PR queda abierto para revisión antes de integrar en `develop`.
+
+[Informe PDF con las capturas de GitHub Actions](https://github.com/jorgecahui/BiblioTech/blob/feature/nueva-funcionalidad/output/pdf/Informe_Practica_CI_Limite_Prestamos.pdf).

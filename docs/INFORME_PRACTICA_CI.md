@@ -9,7 +9,7 @@
 
 Desarrollar y comprobar la regla que impide superar tres préstamos activos por estudiante, incorporar pruebas automáticas y preparar un flujo de integración continua que compile el backend y ejecute esas pruebas ante cambios de código. La práctica incluye un pull request hacia `develop` y una demostración de detección de error y recuperación mediante GitHub Actions.
 
-La implementación local está verificada: **27 pruebas del backend y 24 de la interfaz aprobadas**, además de compilación y empaquetado correctos. La demostración local del error y su corrección también está registrada. La publicación, el pull request y las evidencias de GitHub Actions permanecen pendientes de autorización para publicar.
+La implementación local está verificada: **27 pruebas del backend y 24 de la interfaz aprobadas**, además de compilación y empaquetado correctos. Las ramas están publicadas en GitHub y el [pull request #1 hacia `develop`](https://github.com/jorgecahui/BiblioTech/pull/1) está abierto para revisión, con CI en **Success**. También se completó la demostración remota: un error deliberado produjo **Failure** y su corrección produjo **Success**, con reportes que acreditan la detección de la frontera del límite.
 
 ## 2. Regla de negocio y criterios de aceptación
 
@@ -157,29 +157,29 @@ Maven compila, ejecuta las pruebas y empaqueta el backend. Si una prueba falla, 
 
 El flujo se centra en el backend que implementa la regla. No configura un servicio PostgreSQL externo porque las pruebas usan repositorios simulados o H2 con el perfil `test`.
 
-## 6. Ramas locales y publicación pendiente
+## 6. Ramas publicadas y pull request
 
-El remoto `origin` ya apunta al repositorio indicado. El repositorio comenzó sin historial y se preparó el commit local **`3421075`**, `chore: inicializar BiblioTech`, que contiene solo `.gitignore`. Se crearon localmente `main`, `develop` y **`feature/nueva-funcionalidad`**, esta última desde `develop`. La aplicación, las pruebas y los documentos se prepararon en la rama funcional para revisión y publicación.
+El remoto `origin` apunta a [jorgecahui/BiblioTech](https://github.com/jorgecahui/BiblioTech). El repositorio comenzó sin historial y se preparó el commit **`3421075`**, `chore: inicializar BiblioTech`, que contiene solo `.gitignore`. Se crearon `main`, `develop` y **`feature/nueva-funcionalidad`**, esta última desde `develop`, y se publicaron las tres ramas. La aplicación, la funcionalidad, las pruebas, el flujo CI y los documentos se publicaron en el commit [**`c449dbd`**](https://github.com/jorgecahui/BiblioTech/commit/c449dbddf582c8b91b6e43dabe21161697bcb1c2).
 
-La preparación local se realizó con la terminal. El PDF pide usar **GitHub Desktop**, por lo que corresponde declarar esa diferencia y abrir el repositorio en Desktop para revisar las ramas y continuar la práctica; no se deben recrear las ramas ni el commit inicial. El nombre `feature/nueva-funcionalidad` respeta el indicado en el PDF.
+La preparación y publicación se realizaron con la terminal y la API de GitHub. El PDF pide usar **GitHub Desktop**; esa actividad no se realizó y sus capturas quedan pendientes. Los resultados equivalentes de ramas, commits y publicación sí están disponibles en GitHub. No se deben recrear las ramas ni el commit inicial. El nombre `feature/nueva-funcionalidad` respeta el indicado en el PDF.
 
-La consulta de referencias remotas no devolvió ramas. No se hizo push ni se abrió un pull request ni se ejecutó Actions. Los pasos remotos permanecen pendientes de autorización para publicar; todavía no se han generado capturas de ejecuciones remotas.
+Se abrió el [pull request #1](https://github.com/jorgecahui/BiblioTech/pull/1) con **base `develop`** y **compare `feature/nueva-funcionalidad`**. Como las ramas base contienen únicamente `.gitignore`, este primer PR incorpora también la aplicación base. El PR continúa abierto, sin revisión independiente ni integración.
 
-Con autorización se publicarán las ramas y se abrirá un pull request con **base `develop`** y **compare `feature/nueva-funcionalidad`**. La revisión debe comprobar la regla de frontera y la ejecución de CI antes de integrar.
+GitHub Actions terminó en **Success** tanto para el [push de la implementación](https://github.com/jorgecahui/BiblioTech/actions/runs/39853181208) como para el [pull request](https://github.com/jorgecahui/BiblioTech/actions/runs/39853394870). Se conservan la [captura del CI del PR](evidencias/github/ci-pr-success.jpg) y los [registros de la ejecución correcta](evidencias/github/actions-success-inicial.zip). La revisión debe comprobar la regla de frontera y estos resultados antes de integrar.
 
-Los pasos completos y su equivalencia en terminal están en [GUIA_GITHUB.md](GUIA_GITHUB.md). La guía distingue la preparación local ya realizada de la publicación pendiente. Las capturas de GitHub Desktop y del pull request deben proceder de la ejecución real de esos pasos.
+El registro de actividades y sus comandos equivalentes están en [GUIA_GITHUB.md](GUIA_GITHUB.md). La guía distingue los resultados ya publicados de las actividades pendientes de revisión y de las evidencias de GitHub Desktop.
 
-## 7. Demostración de Failure y Success: pendiente en GitHub
+## 7. Demostración remota de Failure y Success completada
 
-La demostración se realizará en `practica/fallo-limite`, creada desde `develop` después de integrar la versión correcta. No se debe introducir el error deliberado en la rama funcional.
+La rama **`practica/fallo-limite`** se creó desde la versión validada de **`feature/nueva-funcionalidad`**. Se usó esa base porque el PR hacia `develop` permanece abierto para revisión. El error deliberado se mantiene fuera de la rama funcional y de las ramas base.
 
-1. En `puedePrestar`, sustituir únicamente `prestamosActivos >= MAX_PRESTAMOS_ACTIVOS` por `prestamosActivos > MAX_PRESTAMOS_ACTIVOS`. Mantener el límite en tres y conservar la comprobación de registro.
-2. Ejecutar las pruebas. El caso con tres préstamos de `rechazaValidarDesdeElTercerPrestamoActivo` debe detectar que la validación devuelve `true` cuando se esperaba `false`.
-3. Confirmar y publicar ese cambio con GitHub Desktop. Abrir la ejecución de GitHub Actions y obtener la evidencia **Failure**, incluida la aserción fallida y el reporte Surefire.
-4. Restaurar `>=`, ejecutar de nuevo las pruebas y publicar la corrección en la misma rama de demostración.
-5. Obtener la evidencia **Success** de la nueva ejecución y conservar los enlaces de los commits y de ambos resultados.
+1. Se sustituyó únicamente `prestamosActivos >= MAX_PRESTAMOS_ACTIVOS` por `prestamosActivos > MAX_PRESTAMOS_ACTIVOS` dentro de `puedePrestar`. Se mantuvieron el límite en tres y la comprobación de registro.
+2. Se publicó el commit de error [**`34a1f9d`**](https://github.com/jorgecahui/BiblioTech/commit/34a1f9d9bfcd9024c87f92e36c48f3cfc9ac9897), que activó la [ejecución #3](https://github.com/jorgecahui/BiblioTech/actions/runs/39853501576). Comenzó el **22/10/2026 a las 15:59:15** y terminó a las **15:59:55** (America/Lima) en **Failure**.
+3. El reporte oficial de Surefire registró **27 pruebas, 3 fallos, 0 errores y 0 omitidas**. Fallaron el caso unitario con tres préstamos de `rechazaValidarDesdeElTercerPrestamoActivo` y las pruebas de integración `devolverUnPrestamoLiberaCupo` y `permiteElTerceroYRechazaElCuartoSinDescontarOtroEjemplar`. Las tres aserciones indicaron `expected: <false> but was: <true>`. Se conservaron la [captura Failure](evidencias/github/ci-failure.jpg), los [registros](evidencias/github/actions-failure.zip) y el [artefacto oficial de reportes](evidencias/github/reportes-failure.zip).
+4. Se restauró `>=` y se publicó la corrección [**`ee44be3`**](https://github.com/jorgecahui/BiblioTech/commit/ee44be3a4abbc75fe4a686f84735baacd08e73c1) en la misma rama. Las expectativas de las pruebas se mantuvieron intactas.
+5. La [ejecución #4](https://github.com/jorgecahui/BiblioTech/actions/runs/39853717419) comenzó a las **16:00:44** y terminó a las **16:01:25** (America/Lima) en **Success**. El reporte oficial descargado verificó **27 pruebas, 0 fallos, 0 errores y 0 omitidas**. Se conservaron la [captura Success](evidencias/github/ci-success-corregido.jpg), los [registros](evidencias/github/actions-success-corregido.zip) y los [reportes oficiales](evidencias/github/reportes-success-corregido.zip). La rama de demostración quedó corregida.
 
-Un error de descarga, configuración de Java o compilación no prueba que CI detectó una infracción de la regla de negocio. La evidencia Failure debe mostrar el caso de prueba afectado por el cambio deliberado. La rama de demostración no necesita integrarse: la versión correcta debe estar previamente en `develop`.
+El fallo remoto correspondió a las aserciones de frontera de la regla de negocio, no a un error de descarga, configuración de Java o compilación. La comparación corregida recuperó la ejecución completa. La rama de demostración no necesita integrarse: la versión correcta está publicada y validada en la rama funcional, pendiente de revisión mediante el PR #1.
 
 ## 8. Verificación final local
 
@@ -187,7 +187,7 @@ La verificación completa del backend terminó el **22/10/2026 a las 15:48:32 (A
 
 En una copia aislada del backend se cambió únicamente `>=` por `>` en `puedePrestar`. Se ejecutaron 18 pruebas: **1 falló y 0 tuvieron errores**. La aserción del caso con tres préstamos indicó `expected: <false> but was: <true>`. Después se restauró `>=`: **18 pruebas aprobadas, 0 fallos y 0 errores**. La copia restaurada se comparó con el código original mediante SHA-256. El error deliberado no quedó en la aplicación entregada.
 
-La interfaz terminó con **24 pruebas aprobadas en 3 archivos** y compilación de producción correcta, con un paquete inicial de 268.60 kB. Estos resultados y la demostración del fallo corresponden a ejecuciones locales; las capturas de GitHub Actions se obtendrán después de publicar.
+La interfaz terminó con **24 pruebas aprobadas en 3 archivos** y compilación de producción correcta, con un paquete inicial de 268.60 kB. Estos resultados y la demostración aislada del fallo corresponden a ejecuciones locales. Las evidencias de GitHub Actions se registran por separado en las secciones 6, 7 y 9.
 
 | Elemento | Resultado final |
 | --- | --- |
@@ -213,18 +213,22 @@ La interfaz terminó con **24 pruebas aprobadas en 3 archivos** y compilación d
 
 Los reportes XML de la demostración están en `docs/evidencias/failure/` y `docs/evidencias/success/`. Para repetir los comandos de npm en este equipo se utilizó `C:/Program Files/nodejs/npm.cmd`, porque el wrapper global de PowerShell apuntaba a una instalación inexistente. La configuración global del equipo no se modificó.
 
-## 9. Evidencias remotas por completar
+## 9. Evidencias remotas y actividades pendientes
 
 | Evidencia requerida | Estado | Referencia |
 | --- | --- | --- |
-| Ramas main, develop y feature/nueva-funcionalidad en GitHub Desktop y GitHub | Pendiente | Añadir capturas y enlaces reales |
-| Commit de la funcionalidad con sus pruebas | Pendiente | Añadir enlace al commit |
-| Pull request hacia develop | Pendiente | Añadir enlace al PR y captura del destino |
-| CI de la implementación correcta | Pendiente | Añadir enlace a la ejecución Success |
-| Error deliberado en practica/fallo-limite | Pendiente | Añadir enlace al commit y a Failure |
-| Corrección de la demostración | Pendiente | Añadir enlace al commit y a Success |
-| Reportes de pruebas publicados | Pendiente | Descargar y conservar el artefacto de Actions |
-| Revisión e integración del PR | Pendiente | Añadir revisión y estado integrado |
+| Ramas main, develop y feature/nueva-funcionalidad en GitHub | Publicadas | [Repositorio](https://github.com/jorgecahui/BiblioTech) |
+| Uso y capturas de GitHub Desktop | Pendiente | Las operaciones se realizaron mediante terminal y API de GitHub |
+| Commit de la funcionalidad con sus pruebas | Publicado | [c449dbd](https://github.com/jorgecahui/BiblioTech/commit/c449dbddf582c8b91b6e43dabe21161697bcb1c2) |
+| Pull request hacia develop | Abierto para revisión | [PR #1](https://github.com/jorgecahui/BiblioTech/pull/1) |
+| CI de la implementación correcta | Success | [Push](https://github.com/jorgecahui/BiblioTech/actions/runs/39853181208), [PR](https://github.com/jorgecahui/BiblioTech/actions/runs/39853394870), [captura](evidencias/github/ci-pr-success.jpg) |
+| Error deliberado en practica/fallo-limite | Failure; 27 pruebas, 3 fallos y 0 errores | [Commit 34a1f9d](https://github.com/jorgecahui/BiblioTech/commit/34a1f9d9bfcd9024c87f92e36c48f3cfc9ac9897), [Actions](https://github.com/jorgecahui/BiblioTech/actions/runs/39853501576), [captura](evidencias/github/ci-failure.jpg) |
+| Corrección de la demostración | Success; 27 pruebas, 0 fallos y 0 errores | [Commit ee44be3](https://github.com/jorgecahui/BiblioTech/commit/ee44be3a4abbc75fe4a686f84735baacd08e73c1), [Actions](https://github.com/jorgecahui/BiblioTech/actions/runs/39853717419), [captura](evidencias/github/ci-success-corregido.jpg) |
+| Registros de CI correcto | Conservados | [actions-success-inicial.zip](evidencias/github/actions-success-inicial.zip) |
+| Reportes de Surefire del fallo remoto | Descargados y conservados | [reportes-failure.zip](evidencias/github/reportes-failure.zip), [registros](evidencias/github/actions-failure.zip) |
+| Reportes de Surefire de la corrección remota | Descargados y verificados | [reportes-success-corregido.zip](evidencias/github/reportes-success-corregido.zip), [registros](evidencias/github/actions-success-corregido.zip) |
+| Resumen de conteos JUnit remotos | Conservado | [resumen-junit-remoto.json](evidencias/github/resumen-junit-remoto.json) |
+| Revisión independiente e integración del PR | Pendientes | [PR #1](https://github.com/jorgecahui/BiblioTech/pull/1), sin merge |
 
 ## 10. Análisis de la práctica
 

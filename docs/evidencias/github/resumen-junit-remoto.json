@@ -1,0 +1,18 @@
+{
+  "failure": {
+    "run_id": 39853501576,
+    "commit": "34a1f9d9bfcd9024c87f92e36c48f3cfc9ac9897",
+    "tests": 27,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 0
+  },
+  "success": {
+    "run_id": 39853717419,
+    "commit": "ee44be3a4abbc75fe4a686f84735baacd08e73c1",
+    "tests": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

@@ -46,4 +46,6 @@ Abrir `http://localhost:4200`. La API se espera en `http://localhost:8080`. Se p
 
 ## Estado de la entrega
 
-Las ramas locales `main`, `develop` y `feature/nueva-funcionalidad` están preparadas. El remoto configurado es [jorgecahui/BiblioTech](https://github.com/jorgecahui/BiblioTech). La publicación, el pull request y las capturas reales de GitHub Actions requieren autorización para publicar. Las evidencias locales de `docs/evidencias/` no sustituyen las ejecuciones remotas solicitadas por la práctica.
+Las ramas `main`, `develop` y `feature/nueva-funcionalidad` están publicadas en [jorgecahui/BiblioTech](https://github.com/jorgecahui/BiblioTech). El [PR #1 hacia develop](https://github.com/jorgecahui/BiblioTech/pull/1) está abierto para revisión y su [ejecución de CI pasó](https://github.com/jorgecahui/BiblioTech/actions/runs/39853394870).
+
+La rama `practica/fallo-limite` conserva la demostración: [Failure con el error deliberado](https://github.com/jorgecahui/BiblioTech/actions/runs/39853501576) y [Success después de corregirlo](https://github.com/jorgecahui/BiblioTech/actions/runs/39853717419). Las capturas y los reportes oficiales están en `docs/evidencias/github/` y en el informe PDF. La rama de práctica quedó corregida; el PR no se ha integrado.
