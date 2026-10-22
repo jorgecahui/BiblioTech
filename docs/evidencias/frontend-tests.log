@@ -1,0 +1,22 @@
+Node.js: v22.23.2
+npm: 10.9.8
+Comando: npm test -- --watch=false
+
+
+> bibliotech-v2fe@0.0.0 test
+> ng test --watch=false
+
+Using Vitest configuration file: D:\2026-2\Pruebas y Despliegue del software\22-10\BiblioTech\bibliotech-v2fe\bibliotech-v2fe\vitest-base.config.mts
+> Building...
+√ Building...
+Application bundle generation complete. [8.133 seconds] - 2026-10-22T20:49:46.452Z
+
+
+ RUN  v5.0.1 D:/2026-2/Pruebas y Despliegue del software/22-10/BiblioTech/bibliotech-v2fe/bibliotech-v2fe
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  15:49:47
+   Duration  5.13s (environment 68%, setup 13%, tests 13%, transform 3%, import 2%, worker 1%)
+
