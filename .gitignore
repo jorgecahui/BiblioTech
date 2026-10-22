@@ -1,0 +1,9 @@
+/tmp/
+/.cache/
+**/node_modules/
+**/target/
+**/.angular/
+**/.idea/
+**/dist/
+**/cypress/videos/
+**/cypress/screenshots/
