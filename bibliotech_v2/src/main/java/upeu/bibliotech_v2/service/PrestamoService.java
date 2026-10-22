@@ -47,7 +47,7 @@ public class PrestamoService {
                 prestamoRepository.countByEstudianteIdAndEstadoIgnoreCase(
                         estudianteId, ACTIVO);
 
-        if (prestamosActivos > MAX_PRESTAMOS_ACTIVOS) {
+        if (prestamosActivos >= MAX_PRESTAMOS_ACTIVOS) {
             return false;
         }
 
